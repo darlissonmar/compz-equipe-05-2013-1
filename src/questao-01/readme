@@ -1,6 +1,6 @@
 Compilação:
-gcc -o comb comb.c
+gcc -o mypart mypart.c
 
 Exemplos de compilaação:
-./comb 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-./comb 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 > teste.txt
+./mypart 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+./mypart 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 > teste.txt
