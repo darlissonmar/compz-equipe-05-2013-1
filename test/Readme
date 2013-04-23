@@ -1,0 +1,15 @@
+Scripts para gerar numeros aleatorios na pasta script/
+
+Como gerar?
+
+1 - De permissao para execucao do script: 'gerar.sh'
+ > chmod +x gerar.sh
+
+2 - Compilar o programa que gera os numeros aleatorios
+ > make
+
+3 - Executar o script
+ > ./gerar.sh arquivo_de_saida
+
+OBS: No passo 3, se nao passar o argumento para o nome do arquivo de saida,
+     por padrao, o arquivo de saida sera nomeado como: 'aleatorios.output' 
