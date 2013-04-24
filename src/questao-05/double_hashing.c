@@ -12,6 +12,7 @@
 #define FUNCAO_DOUBLE_HASHING ((valor_entrada % 2)*2 +1)
 
 int tabela_hash[TAM_HASH];
+int total_valores_inseridos=0;
 
 int gerar_hashing ( int valor_entrada )
 {
@@ -35,17 +36,21 @@ void inserir_valor_tabela ( int valor_entrada )
         salto=gerar_double_hashing ( indice );
     }
     tabela_hash[indice] = valor_entrada;
+    total_valores_inseridos++;
 }
 
 int buscar_valor ( int valor_entrada )
 {
     int indice = gerar_hashing ( valor_entrada );
     int salto = gerar_double_hashing ( valor_entrada );
-
+    int tentativas_de_busca=0;
     while ( tabela_hash[indice]!=VALOR_NULO )
     {
         if ( tabela_hash[indice]==valor_entrada )
             return tabela_hash[indice];
+	if (tentativas_de_busca>=total_valores_inseridos)
+	    break;
+        tentativas_de_busca++;
         indice = ( ( indice + salto ) % TAM_HASH );
     }
 
@@ -83,6 +88,9 @@ int main ( int argc, char *argv[] )
     {
         printf ( "Valor da tabela[%d]: %d \n", i, tabela_hash[i] );
     }
+
+    int elemento_buscado=gerar_numero_randomico();	
+    printf("Elemento[%d] %d\n", elemento_buscado, buscar_valor(elemento_buscado));
 
     return 0;
 }
