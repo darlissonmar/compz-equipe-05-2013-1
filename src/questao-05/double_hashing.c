@@ -9,7 +9,7 @@
 #define TAM_HASH 10
 #define FUNCAO_HASHING (valor_entrada % TAM_HASH)
 
-#define FUNCAO_DOUBLE_HASHING ((valor_entrada % 2)*2 +7)
+#define FUNCAO_DOUBLE_HASHING ((valor_entrada % 2)*2 +1)
 
 int tabela_hash[TAM_HASH];
 
