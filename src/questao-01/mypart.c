@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define MAX_INPUT 31
@@ -6,66 +7,68 @@
 int main(int argc, char *argv[]) {
   
 	unsigned MAX, MASK, NUM;
-    int i, j;
+	int i, j;
 
-    /* Armazena a string de entrada. */
-    char *input[MAX_INPUT];
-
-	for(i =0; i < argc -1; i++)
-	{
-		input[i] = argv[i + 1];
+	int SIZE = atoi(argv[1]);
+		
+	/* Gerar o conjunto de entrada. */
+	int input[SIZE];
+			
+	for(i =1; i <= SIZE; i++)
+	{	
+		input[i-1] = i;
 	}
+		
+	/* Armazena cada combinação. */
+	int str[MAX_INPUT];
 
-    /* Armazena cada combinação. */
-    char *str[MAX_INPUT];
-
-    /* Manda o bit 1 para a n-ésima posição.
-     * Os bits são invertidos para que a posição n
-     * esteja com o bit zero, a fim de marcar
-     * o final do processo.
-     */
-    MAX = ~(1 << argc -1);
+	/* Manda o bit 1 para a n-ésima posição.
+	* Os bits são invertidos para que a posição n
+	* esteja com o bit zero, a fim de marcar
+	* o final do processo.
+	*/
+	MAX = ~(1 << SIZE);
 		
 
-    /* Primeiro número é o 1. */
-    NUM = 1;	
+	/* Primeiro número é o 1. */
+	NUM = 1;	
 
-    /* Quando o número alcançar MAX, o loop
-     * será encerrado.
-     */
-    while ( MAX & NUM) 
+	/* Quando o número alcançar MAX, o loop
+	* será encerrado.
+	*/
+	while ( MAX & NUM) 
 	{
-        MASK = 1;
-        i = j = 0;
+		MASK = 1;
+		i = j = 0;
 
-        while ( MAX & MASK ) 
+		while ( MAX & MASK ) 
 		{
-            /* Verdadeiro se NUM tem um bit 1
-             * na posição indicada por MASK. */
+			/* Verdadeiro se NUM tem um bit 1
+			* na posição indicada por MASK. */
 
-            if ( NUM & MASK ) 
+			if ( NUM & MASK ) 
 			{
-                /* Gera a combinação em str. */
-                str[i] = input[j];
-                i++;
-            }
-            j++;
-            /* Desloca a máscara */
-            MASK = MASK << 1;
-        }
+				/* Gera a combinação em str. */
+				str[i] = input[j];
+				i++;
+			}
+			j++;
+			/* Desloca a máscara */
+			MASK = MASK << 1;
+		}
 
-		str[i] = NULL;		
+		str[i] = -1;		
 		j = 0;
 
-		while(str[j] != NULL)
+		while(str[j] != -1)
 		{
-			printf("%s ", str[j]);
+			printf("%d ", str[j]);
 			j++;
 		}
-	
-        NUM++;
+			
+		NUM++;
 		printf("\n");
-    }
+	}	
 
-    return 0;
+	return 0;
 }
