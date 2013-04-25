@@ -5,11 +5,9 @@ int M;
 int *tab;
 /*Tamanho da tabela Hash*/
 #define NUMERO_MAX 999999 // < 10^6
-
 #define M 100000 // 10^5
 /*Função hash para definir index*/
 #define hash(v) (v % M)
-
 /*estrutura do campo do vetor*/
 struct campo
 {
@@ -23,8 +21,8 @@ struct campo busca(int *v)
 	int b,a;
 	struct campo campoVazio;
 
-	campoVazio.indice = 0;
-	campoVazio.valor = 0;
+	campoVazio.indice = -1;
+	campoVazio.valor = -1;
 
 	struct campo campoOcupado;
 	printf("\nEntre com o valor para busca:");
@@ -32,18 +30,18 @@ struct campo busca(int *v)
 		b = hash(a);
 		while (tab[b] != 0)
 		{
-			  if (tab[b] == a)
+			 if (tab[b] == a)
 			  {
-				  campoOcupado.indice = b;
-				  campoOcupado.valor = tab[b];
-				  return  campoOcupado;
+			   campoOcupado.indice = b;
+			   campoOcupado.valor = tab[b];
+			   return  campoOcupado;
 			  }
-			  else
+			else
 			  {
-				  b = (b + 1) % M;
+			   b = (b + 1) % M;
 			  }
 		}
-		 return  campoVazio;
+	 return  campoVazio;
 }
 
 int *ler()
@@ -52,7 +50,7 @@ int *ler()
 		int *valores_entrada;
 		valores_entrada = malloc(M * sizeof (NUMERO_MAX));
 		char linha[100];
-		arq = fopen ("/home/iasmim/workspace/linear_probing/src/linear.txt", "r");
+		arq = fopen ("test/scripts/linear.txt", "r");
 		if(arq != NULL)
 		{
 			int j;
@@ -75,7 +73,6 @@ int *ler()
 			 puts("Erro ao tentar abrir arquivo");
 			 return 0;
 		}
-
 }
 
 int main(void) {
@@ -86,15 +83,12 @@ int main(void) {
 	 /*inicia a tabela com elementos*/
 	tab = malloc(M * sizeof (NUMERO_MAX));
 	valores_aleatorios = malloc(M * sizeof (NUMERO_MAX));
-
 	//Pega os valores aleatorios gerados no script
 	valores_aleatorios = ler();
 
 	    for (j=0; j< M; j++)
 	     {
-
 			  c = hash(valores_aleatorios[j]);
-
 			  printf("%d[%d] \n",valores_aleatorios[j],c);
 			     while (tab[c] != 0)
 			        c = (c + 1) % M;
