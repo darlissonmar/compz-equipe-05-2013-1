@@ -4,8 +4,9 @@
 int M;
 int *tab;
 /*Tamanho da tabela Hash*/
-#define M 10
-#define ran_max 100
+#define NUMERO_MAX 999999 // < 10^6
+
+#define M 100000 // 10^5
 /*Função hash para definir index*/
 #define hash(v) (v % M)
 
@@ -45,35 +46,69 @@ struct campo busca(int *v)
 		 return  campoVazio;
 }
 
+int *ler()
+{
+	    FILE *arq;
+		int *valores_entrada;
+		valores_entrada = malloc(M * sizeof (NUMERO_MAX));
+		char linha[100];
+		arq = fopen ("/home/iasmim/workspace/linear_probing/src/linear.txt", "r");
+		if(arq != NULL)
+		{
+			int j;
+		    while(fgets(linha, sizeof linha, arq) != NULL)
+		    {
+		        int len = strlen(linha) - 1;
+		        if (linha[len] == '\n') /*Verifica se o ultimo caracter é um enter*/
+		                linha[len] = 0; /*Isso substitui o enter por um '\0', que indica o fim da string*/
+		        if(strlen(linha) > 0)
+		        {
+		        	valores_entrada[j] = atoi(&linha); /*Converte um char para int*/
+		            j++;
+		        }
+		    }
+		    fclose(arq);
+		    return valores_entrada;
+		}
+		else
+		{
+			 puts("Erro ao tentar abrir arquivo");
+			 return 0;
+		}
+
+}
 
 int main(void) {
-	int c,v,j,s;
+	int c,j,s;
+	int *valores_aleatorios;
 	struct campo resultado;
 
 	 /*inicia a tabela com elementos*/
-	tab = malloc(M * sizeof (ran_max));
+	tab = malloc(M * sizeof (NUMERO_MAX));
+	valores_aleatorios = malloc(M * sizeof (NUMERO_MAX));
 
-	 /* inicializar o gerador de números aleatórios */
-    srand(time(NULL));
-    /* para gerar números aleatórios de 0 a 10(temporario para teste) */
+	//Pega os valores aleatorios gerados no script
+	valores_aleatorios = ler();
+
 	    for (j=0; j< M; j++)
 	     {
-			  v = (rand() % ran_max);
-			  c = hash(v);
 
-			  printf("%d[%d],",v,c);
+			  c = hash(valores_aleatorios[j]);
+
+			  printf("%d[%d] \n",valores_aleatorios[j],c);
 			     while (tab[c] != 0)
 			        c = (c + 1) % M;
-			     tab[c] = v;
+			     tab[c] = valores_aleatorios[j];
 	     }
 	    /*imprime o resultado*/
 	    printf("\n");
-	    for (s = 0; s < M; ++s) {
-	    	printf("%d,",tab[s]);
+	    for (s = 0; s < M; ++s)
+	    {
+	    	printf("%d[%d]\n",tab[s],s);
 		}
 
     resultado =  busca(tab);
-    printf("%d[%d]",resultado.valor,resultado.indice);
+    printf("Valor da tabela[%d]:%d",resultado.indice,resultado.valor);
 	return 0;
 }
 
