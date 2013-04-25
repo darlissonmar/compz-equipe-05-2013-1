@@ -1,0 +1,10 @@
+Compilação:
+	make clean
+	make
+Utilização;
+- Deve existir um arquivo de entrada formato ASCII texto contendo
+  10^5 números inteiros, de preferência aleatórios.
+
+	./double_hashing arquivo_entrada.txt 1111
+
+- Onde 1111 pode ser um valor qualquer a ser buscado na tabela.
