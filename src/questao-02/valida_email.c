@@ -49,7 +49,7 @@ int main( int argc, char *argv[]) {
 	//Verifica se o diretório do arquivo existe
 	if((arquivo = fopen(argv[1],"r")) == NULL)
 	{
-		printf("Erro ao abrir arquivo!!!\n");
+		printf("Erro ao abrir arquivo %s !!!\n", argv[1]);
 		exit(1);
 	}
 
@@ -88,14 +88,14 @@ int main( int argc, char *argv[]) {
 				case 'y': estado = 1; break;
 				case 'w': estado = 1; break;
 				case 'z': estado = 1; break;
-                case '\n': estado = -1; break;
+    	case '\n': estado = -1; break;
 				default: estado = -1; break;
 			}
 			break;
 			case 1:
 			switch(caracter)
 			{
-                case 'a': estado = 1; break;
+				case 'a': estado = 1; break;
 				case 'b': estado = 1; break;
 				case 'c': estado = 1; break;
 				case 'd': estado = 1; break;
