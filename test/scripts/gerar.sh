@@ -12,10 +12,10 @@ if [ $# -ne 1 ]; then
 	arquivo_nome='aleatorios.output'
 	
 else 
-	arquivo_nome=$1
+	arquivo_nome=$1'.output'
 fi
 
 ./aleatorios > $arquivo_nome
 
-echo "Total de numeros repetidos:" 
+echo "Total de numeros repetidos em: " $arquivo_nome 
 cat $arquivo_nome | uniq -d | wc -l

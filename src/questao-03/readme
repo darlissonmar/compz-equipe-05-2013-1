@@ -1,0 +1,29 @@
+Informacoes adicionais sobre esse programa
+
+Para compilar:
+> make all
+
+Para limpar:
+> make clean
+
+Para rodar:
+> ./myhash <arquivo>*
+
+* Esse arquivo eh copiado da pasta /test/srcipts pelo make.
+
+Interacao com o programa:
+Ao rodar, o programa solicitara que voce insira um valor a ser 
+buscando na tabela hash. da seguinte forma:
+
+> Insira um valor a ser buscado na hash table(digite '0' finalizar >
+
+Caso o numero seja encontrado, voce devera receber a seguinte mensagem:
+
+> "O numero [numero buscado**] foi encontrado "
+
+Caso contrario:
+> "O numero [numero buscado**] nao foi encontrado."
+
+A qualquer momento voce pode digitar '0' para encerrar o programa.
+
+
