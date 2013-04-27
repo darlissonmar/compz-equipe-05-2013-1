@@ -88,7 +88,7 @@ int main( int argc, char *argv[]) {
 				case 'y': estado = 1; break;
 				case 'w': estado = 1; break;
 				case 'z': estado = 1; break;
-    	case '\n': estado = -1; break;
+    				case '\n': estado = -1; break;
 				default: estado = -1; break;
 			}
 			break;
@@ -136,14 +136,14 @@ int main( int argc, char *argv[]) {
 				case '9': estado = 1; break;
 				case '@': estado = 2; break;
 
-                case '\n': estado = -1; break;
+                		case '\n': estado = -1; break;
 				default: estado = -1; break;
 			}
 			break;
 			case 2:
 			switch(caracter)
 			{
-                case 'a': estado = 3; break;
+                		case 'a': estado = 3; break;
 				case 'b': estado = 3; break;
 				case 'c': estado = 3; break;
 				case 'd': estado = 3; break;
@@ -170,14 +170,14 @@ int main( int argc, char *argv[]) {
 				case 'w': estado = 3; break;
 				case 'z': estado = 3; break;
 
-                case '\n': estado = -1; break;
-                default: estado = -1; break;
+                		case '\n': estado = -1; break;
+                		default: estado = -1; break;
 			}
 			break;
 			case 3:
 			switch(caracter)
 			{
-                case 'a': estado = 3; break;
+               			case 'a': estado = 3; break;
 				case 'b': estado = 3; break;
 				case 'c': estado = 3; break;
 				case 'd': estado = 3; break;
@@ -215,14 +215,14 @@ int main( int argc, char *argv[]) {
 				case '9': estado = 3; break;
 				case '.': estado = 4; break;
 
-                case '\n': estado = -1; break;
+                		case '\n': estado = -1; break;
 				default: estado = -1; break;
 			}
 			break;
 			case 4:
 			switch(caracter)
 			{
-                case 'a': estado = 5; break;
+                		case 'a': estado = 5; break;
 				case 'b': estado = 5; break;
 				case 'c': estado = 5; break;
 				case 'd': estado = 5; break;
@@ -249,14 +249,14 @@ int main( int argc, char *argv[]) {
 				case 'w': estado = 5; break;
 				case 'z': estado = 5; break;
 
-                case '\n': estado = -1; break;
+                		case '\n': estado = -1; break;
 				default: estado = -1; break;
 			}
 			break;
 			case 5:
 			switch(caracter)
 			{
-                case 'a': estado = 5; break;
+                		case 'a': estado = 5; break;
 				case 'b': estado = 5; break;
 				case 'c': estado = 5; break;
 				case 'd': estado = 5; break;
@@ -292,7 +292,7 @@ int main( int argc, char *argv[]) {
 			case 6:
 			switch(caracter)
 			{
-                case 'a': estado = 5; break;
+                		case 'a': estado = 5; break;
 				case 'b': estado = 5; break;
 				case 'c': estado = 5; break;
 				case 'd': estado = 5; break;
