@@ -1,6 +1,9 @@
 Compilação:
-gcc -o mypart mypart.c
+make
 
-Exemplos de compilaação:
+Limpar binario e arquivos temporários:
+make clean
+
+Exemplos de execução:
 ./mypart 15
-./mypart 20 > teste.txt
+./mypart 20 > saida.txt
