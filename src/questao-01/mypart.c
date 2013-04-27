@@ -36,39 +36,46 @@ int main(int argc, char *argv[]) {
 	/* Quando o número alcançar MAX, o loop
 	* será encerrado.
 	*/
-	while ( MAX & NUM) 
+	int RANGE = 1;
+	while (RANGE <= SIZE)
 	{
-		MASK = 1;
-		i = j = 0;
-
-		while ( MAX & MASK ) 
+		NUM = 1;
+		while ( MAX & NUM) 
 		{
-			/* Verdadeiro se NUM tem um bit 1
-			* na posição indicada por MASK. */
+			MASK = 1;
+			i = j = 0;
 
-			if ( NUM & MASK ) 
+			while ( MAX & MASK ) 
 			{
-				/* Gera a combinação em str. */
-				str[i] = input[j];
-				i++;
+				/* Verdadeiro se NUM tem um bit 1
+				* na posição indicada por MASK. */
+
+				if ( NUM & MASK ) 
+				{
+					/* Gera a combinação em str. */
+					str[i] = input[j];
+					i++;
+				}
+				j++;
+				/* Desloca a máscara */
+				MASK = MASK << 1;
 			}
-			j++;
-			/* Desloca a máscara */
-			MASK = MASK << 1;
-		}
 
-		str[i] = -1;		
-		j = 0;
-
-		while(str[j] != -1)
-		{
-			printf("%d ", str[j]);
-			j++;
+			str[i] = -1;		
+			j = 0;
+			if(i == RANGE)
+			{
+				while(str[j] != -1)
+				{
+					printf("%d ", str[j]);
+					j++;
+				}
+				printf("\n");
+			}			
+			NUM++;
 		}
-			
-		NUM++;
-		printf("\n");
-	}	
+		RANGE = RANGE + 1;
+	}
 
 	return 0;
 }
