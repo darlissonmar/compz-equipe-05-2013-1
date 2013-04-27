@@ -68,18 +68,22 @@ int has_part(int *mypart, int n)
 	int i, j;
 	
 	i = 0;
+	//Incrementa a primeira posicao do particionador
 	mypart[i]++;
 	mypart[n] = 1;
 
-	for (j = i + 1; j < n - 1; ++j)
+
+	for (j = i + 1; j < n - 1; j++)
 	{
 		if (mypart[j] > mypart[n])
 			mypart[n] = mypart[j];
 	}
 
+	//Não há mais partições para serem impressas
 	if ( mypart[0] == n + 1 )
 		return 0;
 
+	//Caso existam mais combinações, mypart[i] conterá o maior indice de particao
 	while ((mypart[i] > mypart[n] + 1)) 
 	{
 		mypart[i] = 1;
@@ -87,7 +91,6 @@ int has_part(int *mypart, int n)
 		mypart[i]++;
 		mypart[n] = 1;
 	
-		j = 0;
 		for (j = i + 1; j < n - 1; ++j)
 		{
 			if (mypart[j] > mypart[n])
