@@ -1,6 +1,6 @@
 # make para limpar todas as pastas com codigo
 
-SCRIPTS_PATH=../../test/scripts
+SCRIPTS_PATH=test/scripts
 Q1_PATH=src/questao-01
 Q2_PATH=src/questao-02
 Q3_PATH=src/questao-03
