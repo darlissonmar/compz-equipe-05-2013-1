@@ -29,7 +29,6 @@
         leandro@9ag.com -> Inválido
         leandro@ag9.com -> Válido
         lendro@ag9.c1m - Inválido
-**
 **/
 
 int main( int argc, char *argv[]) {
