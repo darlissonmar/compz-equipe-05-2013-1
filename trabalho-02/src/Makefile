@@ -14,10 +14,10 @@ compile:	$(FILE).lex.c
 	@ gcc -o $(BIN_DIR)/$(FILE).o $(FILE).lex.c -lfl
 	@ echo "done"
 
-valida.lex.c:
+valida.lex.c: compile
 	@ flex -o $(FILE).lex.c $(FILE).lex
 	
-teste:	clean
+teste:
 	./$(SCRIPT_FILE).sh
 
 clean:
