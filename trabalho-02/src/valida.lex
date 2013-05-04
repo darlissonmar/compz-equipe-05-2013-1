@@ -2,11 +2,13 @@
 /* Exemplo de uso do Flex */
 %}
 EMAIL		[a-zA-Z][a-zA-Z0-9\.\-\_]+@([a-zA-Z][a-zA-Z]+\.)+[a-zA-Z][a-zA-Z]+
-FIM_LINHA	[\n]
+FIM_LINHA	[ \r\n]
+OUTRO		[.]*
 %%
 
-{EMAIL}			printf("%s -> Email Válido\n", yytext);
-.			printf("%s -> Email Inválido\n", yytext);
+{EMAIL}			{printf("%s -> Email Válido\n", yytext);}
+{FIM_LINHA}		{}
+{OUTRO}			{printf("%s -> Email Inválido\n", yytext);}
 %%
 main(int argc, char *argv[])
 {
