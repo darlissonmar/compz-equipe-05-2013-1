@@ -14,10 +14,10 @@ compile:	$(FILE).lex.c
 	@ gcc -o $(BIN_DIR)/$(FILE).o $(FILE).lex.c -lfl
 	@ echo "done"
 
-valida.lex.c: compile
+valida.lex.c:
 	@ flex -o $(FILE).lex.c $(FILE).lex
 	
-teste:
+teste: compile
 	./$(SCRIPT_FILE).sh
 
 clean:
@@ -25,6 +25,6 @@ clean:
 	@ rm -rf *.c
 	@ rm -rf *.*~ 
 	@ rm -rf *~
-	@ rm -rf $(SAIDA_DIR)/*.txt
-	@ rm -rf $(BIN_DIR)/*.o
+	@ rm -rf $(SAIDA_DIR)
+	@ rm -rf $(BIN_DIR)
 	@ echo "done"

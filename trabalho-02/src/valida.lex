@@ -6,9 +6,9 @@ FIM_LINHA	[ \r\n]
 OUTRO		[.]*
 %%
 
-{EMAIL}			{printf("%s -> Email Válido\n", yytext);}
+{EMAIL}			{printf("%s\t->\tOK\n", yytext);}
 {FIM_LINHA}		{}
-{OUTRO}			{printf("%s -> Email Inválido\n", yytext);}
+{OUTRO}			{printf("%s\t->\tNOK\n", yytext);}
 %%
 main(int argc, char *argv[])
 {
