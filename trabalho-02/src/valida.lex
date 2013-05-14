@@ -1,7 +1,7 @@
 %{
 /* Exemplo de uso do Flex */
 %}
-EMAIL		[a-zA-Z][a-zA-Z0-9\.\-\_]+@([a-zA-Z][a-zA-Z]+\.)+[a-zA-Z][a-zA-Z]+
+EMAIL		([a-zA-Z][a-zA-Z0-9\.\-\_])+@([a-zA-Z][a-zA-Z]+\.)+[a-zA-Z][a-zA-Z]+
 FIM_LINHA	[ \r\n]
 OUTRO		[.]*
 %%
