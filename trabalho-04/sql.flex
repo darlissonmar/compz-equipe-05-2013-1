@@ -15,7 +15,8 @@ T_AND                   (A|a)(N|n)(D|d)
 T_OR                    (O|o)(R|r)
 T_NOT                   (N|n)(O|o)(T|t)
 
-T_ORDER_BY		(O|o)(R|r)(D|e)(R|r){T_BRANCO}(B|b)(Y|y)
+T_ORDER			(O|o)(R|r)(D|d)(E|e)(R|r)	
+T_BY			(B|b)(Y|y)
 T_ASC			(A|a)(S|s)(C|c)
 T_DESC		        (D|d)(E|e)(S|s)(C|c)
 
@@ -41,11 +42,12 @@ T_PARAMETRO_STRING	\".*\"
 {T_OR}                  return OR;
 {T_NOT}                 return NOT;
 
-{T_ORDER_BY}		return ORDER_BY;
+{T_ORDER}		return ORDER;
+{T_BY}			return BY;
 {T_ASC}			return ASC;
 {T_DESC}		return DESC;
 
-{T_NOME}		return IDENTIFICADOR;
+{T_NOME}		return IDENTIFICADOR;			
 {T_TABELA_NOME}		return IDENTIFICADOR_COM_TABELA;
 
 {T_PARAMETRO_INTEIRO}	return INTEIRO;

@@ -1,3 +1,21 @@
 SELECT * FROM TABELA
+
 SELECT CAMPO1, CAMPO2 FROM TABELA
+
 SELECT T1.CAMPO1, T2.CAMPO2 FROM TABELA AS T1, TABELA2 AS T2
+ORDER BY T1.CAMPO1 ASC, T2.CAMPO2 DESC
+
+SELECT supplier_city FROM suppliers
+ORDER BY supplier_city
+
+SELECT supplier_city FROM suppliers
+ORDER BY supplier_city ASC
+
+SELECT supplier_city FROM suppliers
+ORDER BY supplier_city DESC
+
+SELECT supplier_city, supplier_state FROM suppliers
+ORDER BY supplier_city DESC, supplier_state ASC
+
+SELECT supplier_city, supplier_state FROM suppliers
+ORDER BY supplier_city, supplier_state ASC

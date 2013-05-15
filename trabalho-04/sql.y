@@ -7,7 +7,7 @@
 
 %token SELECT FROM WHERE AS
 %token AND OR NOT
-%token ORDER_BY ASC DESC
+%token ORDER BY ASC DESC
 %token IDENTIFICADOR IDENTIFICADOR_COM_TABELA
 %token INTEIRO REAL TEXTO
 
@@ -33,10 +33,11 @@ Input:
 
 Line:
 	END
-	| Query END
+	| Select END
+	| OrderBy END
 ;
 
-Query:
+Select:
 	SELECT Campos FROM Tabelas
 ;
 
@@ -46,10 +47,8 @@ Campos:
 ;
 
 Lista_Campos:
-	IDENTIFICADOR
-	| IDENTIFICADOR_COM_TABELA
-	| Lista_Campos SEPARADOR IDENTIFICADOR
-	| Lista_Campos SEPARADOR IDENTIFICADOR_COM_TABELA
+	Identificador
+	| Lista_Campos SEPARADOR Identificador
 ;
 
 Tabelas:
@@ -60,6 +59,26 @@ Tabelas:
 Tabela:
 	IDENTIFICADOR
 	| IDENTIFICADOR AS IDENTIFICADOR
+;
+
+OrderBy:
+	ORDER BY Campos_OrderBy
+;
+
+Campos_OrderBy:
+	Campo_OrderBy
+	| Campos_OrderBy SEPARADOR Campo_OrderBy
+;
+
+Campo_OrderBy:
+	Identificador
+	| Identificador ASC
+	| Identificador DESC
+;
+
+Identificador:
+	IDENTIFICADOR
+	| IDENTIFICADOR_COM_TABELA
 ;
 		
 %%
