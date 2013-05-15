@@ -5,8 +5,39 @@
 #define YYSTYPE double
 %}
 
+%token SELECT FROM WHERE AS
+%token AND OR NOT
+%token ORDER_BY ASC DESC
+%token IDENTIFICADOR
+%token INTEIRO REAL TEXTO
+
+%token ASTERISCO
+%token SEPARADOR
+%token PARENTESE_ESQ
+%token PARENTESE_DIR
+%token IGUAL
+%token DIFERENTE
+%token MENOR
+%token MAIOR_IGUAL
+%token END
+
+%start Input
 %%
 
+Input:
+	
+	| Input Line
+;
+
+Line:
+	END
+	| Query END
+;
+
+Query:
+	END
+;
+		
 %%
 
 int yyerror(char *s) {
