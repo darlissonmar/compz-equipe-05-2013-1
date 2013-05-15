@@ -18,6 +18,8 @@
 %token IGUAL
 %token DIFERENTE
 %token MENOR
+%token MENOR_IGUAL
+%token MAIOR
 %token MAIOR_IGUAL
 %token END
 
@@ -35,11 +37,35 @@ Line:
 ;
 
 Query:
-	END
+	SELECT Campos FROM Tabelas
+;
+
+Campos:
+	ASTERISCO
+	| Lista_Campos
+;
+
+Lista_Campos:
+	IDENTIFICADOR
+	| Lista_Campos SEPARADOR IDENTIFICADOR
+;
+
+Tabelas:
+	IDENTIFICADOR
 ;
 		
 %%
 
+/*
+SELECT * FROM TABELA
+
+SELECT CAMPO1, CAMPO2 FROM TABELA
+
+SELECT CAMPO1, CAMPO2 FROM TABELA WHERE CAMPO1 = VALOR
+
+SELECT T1.CAMPO1, T2.CAMPO2 FROM TABELA AS T1, TABELA2 AS T2 
+WHERE T1.CAMPO1 = VALOR AND T2.CAMPO2 = VALOR2
+*/
 int yyerror(char *s) {
 	printf("%s\n", s);
 }
