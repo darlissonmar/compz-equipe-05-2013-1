@@ -19,3 +19,4 @@ ORDER BY supplier_city DESC, supplier_state ASC
 
 SELECT supplier_city, supplier_state FROM suppliers
 ORDER BY supplier_city, supplier_state ASC
+WHERE T1.CAMPO1 = VALOR AND T2.CAMPO2 = VALOR2

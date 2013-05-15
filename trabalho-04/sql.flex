@@ -54,6 +54,9 @@ T_PARAMETRO_STRING	\".*\"
 {T_PARAMETRO_REAL}	return REAL;
 {T_PARAMETRO_STRING}	return TEXTO;
 
+"+" 			return PLUS;
+"-" 			return MINUS;
+"/" 			return DIVIDE;
 "*"			return ASTERISCO;
 ","			return SEPARADOR;
 "("			return PARENTESE_ESQ;

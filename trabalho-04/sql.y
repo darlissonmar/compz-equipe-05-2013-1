@@ -2,7 +2,6 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define YYSTYPE double
 %}
 
 %token SELECT FROM WHERE AS
@@ -10,6 +9,10 @@
 %token ORDER BY ASC DESC
 %token IDENTIFICADOR IDENTIFICADOR_COM_TABELA
 %token INTEIRO REAL TEXTO
+
+%token PLUS
+%token MINUS
+%token DIVIDE
 
 %token ASTERISCO
 %token SEPARADOR
@@ -35,6 +38,7 @@ Line:
 	END
 	| Select END
 	| OrderBy END
+	| Where END
 ;
 
 Select:
@@ -76,6 +80,46 @@ Campo_OrderBy:
 	| Identificador DESC
 ;
 
+Where:
+	WHERE Expr
+;
+
+Expr:
+	Identificador
+	| INTEIRO		
+	| REAL
+	| TEXTO
+	| PARENTESE_ESQ Expr PARENTESE_DIR
+	| Expr Bool_op Expr
+	| Expr Comp_op Expr
+	| Expr Add_op Expr
+	| Expr Mult_op Expr
+;
+
+Bool_op:
+	AND
+	| OR
+;
+
+Comp_op:
+	IGUAL
+	| DIFERENTE
+	| MENOR
+	| MENOR_IGUAL
+	| MAIOR
+	| MAIOR_IGUAL
+;
+
+Add_op:
+	PLUS
+	| MINUS
+;
+
+Mult_op:
+	ASTERISCO
+	| DIVIDE
+;
+
 Identificador:
 	IDENTIFICADOR
 	| IDENTIFICADOR_COM_TABELA
@@ -83,16 +127,6 @@ Identificador:
 		
 %%
 
-/*
-SELECT * FROM TABELA
-
-SELECT CAMPO1, CAMPO2 FROM TABELA
-
-SELECT CAMPO1, CAMPO2 FROM TABELA WHERE CAMPO1 = VALOR
-
-SELECT T1.CAMPO1, T2.CAMPO2 FROM TABELA AS T1, TABELA2 AS T2 
-WHERE T1.CAMPO1 = VALOR AND T2.CAMPO2 = VALOR2
-*/
 int yyerror(char *s) {
 	printf("%s\n", s);
 }
