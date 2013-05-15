@@ -8,6 +8,7 @@ T_BRANCO		[ \t\r]+
 T_SELECT		(S|s)(E|e)(L|l)(E|e)(C|c)(T|T)	
 T_FROM			(F|f)(R|r)(O|o)(M|m)
 T_WHERE			(W|w)(H|h)(E|e)(R|r)(E|e)
+T_AND                   (A|a)(N|n)(D|d)
 T_ORDER_BY		(O|o)(R|r)(D|e)(R|r){T_BRANCO}(B|b)(Y|y)
 T_NOME			[A-Za-z][A-Za-z0-9_]*
 T_DIGITO		[0-9]
