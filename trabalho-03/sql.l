@@ -27,8 +27,8 @@ T_PARAMETRO_STRING	\".*\"
 {T_SELECT}		return SELECT;
 {T_FROM}		return FROM;
 {T_WHERE}		return WHERE;
-{T_AND}                 return AND
-{T_OR}                  return OR
+{T_AND}                 return AND;
+{T_OR}                  return OR;
 {T_ORDER_BY}		return ORDER_BY;
 {T_NOME}		return NOME;
 {T_DIGITO}		return DIGITO;
@@ -39,10 +39,10 @@ T_PARAMETRO_STRING	\".*\"
 ","			return IDENT_SEPARADOR;
 "("			return PARENTESE_ESQ;
 ")"			return PARENTESE_DIR;
-"="                     return IGUAL
-"<>"			return DIFERENTE
-"<"			return MENOR
-"<="			return MENOR_IGUAL
-">"			return MAIOR
-">="			return MAIOR_IGUAL
+"="                     return IGUAL;
+"<>"			return DIFERENTE;
+"<"			return MENOR;
+"<="			return MENOR_IGUAL;
+">"			return MAIOR;
+">="			return MAIOR_IGUAL;
 "\n" 			return END;
