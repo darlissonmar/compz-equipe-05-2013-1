@@ -14,6 +14,7 @@ T_AS			(A|a)(S|s)
 T_AND			(A|a)(N|n)(D|d)
 T_OR			(O|o)(R|r)
 T_NOT			(N|n)(O|o)(T|t)
+T_XOR			(X|x)(O|o)(R|r)
 
 T_ORDER			(O|o)(R|r)(D|d)(E|e)(R|r)	
 T_BY			(B|b)(Y|y)
@@ -41,6 +42,7 @@ T_PARAMETRO_STRING	\".*\"
 {T_AND}			return AND;
 {T_OR}			return OR;
 {T_NOT}			return NOT;
+{T_XOR}			return XOR;
 
 {T_ORDER}		return ORDER;
 {T_BY}			return BY;

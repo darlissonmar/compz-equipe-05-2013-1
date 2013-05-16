@@ -26,6 +26,16 @@
 %token MAIOR_IGUAL
 %token END
 
+%left OR
+%left XOR
+%left AND
+%left NOT '!'
+%left IGUAL DIFERENTE MENOR MENOR_IGUAL MAIOR MAIOR_IGUAL
+%left PLUS MINUS
+%left DIVIDE
+
+%nonassoc NEG
+
 %start Input
 %%
 
@@ -85,15 +95,24 @@ Expr:
 	| REAL
 	| TEXTO
 	| PARENTESE_ESQ Expr PARENTESE_DIR
-	| Expr Bool_op Expr
-	| Expr Comp_op Expr
 	| Expr Add_op Expr
 	| Expr Mult_op Expr
+	| '-' Expr %prec NEG
+	| Expr Bool_op Expr
+	| NOT Expr
+	| Expr Comp_op Expr
+	| Expr IGUAL PARENTESE_ESQ Select PARENTESE_DIR
+	| Expr DIFERENTE PARENTESE_ESQ Select PARENTESE_DIR 
+	| Expr MENOR PARENTESE_ESQ Select PARENTESE_DIR
+	| Expr MENOR_IGUAL PARENTESE_ESQ Select PARENTESE_DIR
+	| Expr MAIOR PARENTESE_ESQ Select PARENTESE_DIR 
+	| Expr MAIOR_IGUAL PARENTESE_ESQ Select PARENTESE_DIR	
 ;
 
 Bool_op:
 	AND
 	| OR
+	| XOR
 ;
 
 Comp_op:
