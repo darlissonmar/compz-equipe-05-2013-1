@@ -31,18 +31,11 @@
 
 Input:
 	
-	| Input Line
-;
-
-Line:
-	END
-	| Select END
-	| OrderBy END
-	| Where END
+	| Input Select
 ;
 
 Select:
-	SELECT Campos FROM Tabelas
+	SELECT Campos FROM Tabelas Where OrderBy END
 ;
 
 Campos:
@@ -66,7 +59,8 @@ Tabela:
 ;
 
 OrderBy:
-	ORDER BY Campos_OrderBy
+
+	| ORDER BY Campos_OrderBy
 ;
 
 Campos_OrderBy:
@@ -81,7 +75,8 @@ Campo_OrderBy:
 ;
 
 Where:
-	WHERE Expr
+
+	| WHERE Expr
 ;
 
 Expr:

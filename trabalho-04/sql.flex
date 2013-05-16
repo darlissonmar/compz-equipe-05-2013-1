@@ -9,11 +9,11 @@ T_BRANCO		[ \t\r]+
 T_SELECT		(S|s)(E|e)(L|l)(E|e)(C|c)(T|t)	
 T_FROM			(F|f)(R|r)(O|o)(M|m)
 T_WHERE			(W|w)(H|h)(E|e)(R|r)(E|e)
-T_AS                    (A|a)(S|s)
+T_AS			(A|a)(S|s)
 
-T_AND                   (A|a)(N|n)(D|d)
-T_OR                    (O|o)(R|r)
-T_NOT                   (N|n)(O|o)(T|t)
+T_AND			(A|a)(N|n)(D|d)
+T_OR			(O|o)(R|r)
+T_NOT			(N|n)(O|o)(T|t)
 
 T_ORDER			(O|o)(R|r)(D|d)(E|e)(R|r)	
 T_BY			(B|b)(Y|y)
@@ -38,9 +38,9 @@ T_PARAMETRO_STRING	\".*\"
 {T_WHERE}		return WHERE;
 {T_AS}			return AS;
 
-{T_AND}                 return AND;
-{T_OR}                  return OR;
-{T_NOT}                 return NOT;
+{T_AND}			return AND;
+{T_OR}			return OR;
+{T_NOT}			return NOT;
 
 {T_ORDER}		return ORDER;
 {T_BY}			return BY;
@@ -61,10 +61,11 @@ T_PARAMETRO_STRING	\".*\"
 ","			return SEPARADOR;
 "("			return PARENTESE_ESQ;
 ")"			return PARENTESE_DIR;
-"="                     return IGUAL;
+"="			return IGUAL;
 "<>"			return DIFERENTE;
 "<"			return MENOR;
 "<="			return MENOR_IGUAL;
 ">"			return MAIOR;
 ">="			return MAIOR_IGUAL;
-"\n" 			return END;
+";"			return END;
+"\n" 			{}
