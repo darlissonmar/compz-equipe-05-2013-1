@@ -29,10 +29,10 @@
 %left OR
 %left XOR
 %left AND
-%left NOT '!'
+%left NOT
 %left IGUAL DIFERENTE MENOR MENOR_IGUAL MAIOR MAIOR_IGUAL
 %left PLUS MINUS
-%left DIVIDE
+%left DIVIDE ASTERISCO
 
 %nonassoc NEG
 
@@ -40,12 +40,18 @@
 %%
 
 Input:
-	
-	| Input Select
+	  
+	| Input Query END
+;
+
+Query:
+	Select
+	| Select OrderBy
+	| Select Where OrderBy
 ;
 
 Select:
-	SELECT Campos FROM Tabelas Where OrderBy END
+	SELECT Campos FROM Tabelas
 ;
 
 Campos:
@@ -69,8 +75,7 @@ Tabela:
 ;
 
 OrderBy:
-
-	| ORDER BY Campos_OrderBy
+	ORDER BY Campos_OrderBy
 ;
 
 Campos_OrderBy:
@@ -85,8 +90,7 @@ Campo_OrderBy:
 ;
 
 Where:
-
-	| WHERE Expr
+	WHERE Expr
 ;
 
 Expr:
@@ -95,18 +99,13 @@ Expr:
 	| REAL
 	| TEXTO
 	| PARENTESE_ESQ Expr PARENTESE_DIR
+	| Expr Bool_op Expr
+	| Expr Comp_op Expr	
 	| Expr Add_op Expr
 	| Expr Mult_op Expr
-	| '-' Expr %prec NEG
-	| Expr Bool_op Expr
-	| NOT Expr
-	| Expr Comp_op Expr
-	| Expr IGUAL PARENTESE_ESQ Select PARENTESE_DIR
-	| Expr DIFERENTE PARENTESE_ESQ Select PARENTESE_DIR 
-	| Expr MENOR PARENTESE_ESQ Select PARENTESE_DIR
-	| Expr MENOR_IGUAL PARENTESE_ESQ Select PARENTESE_DIR
-	| Expr MAIOR PARENTESE_ESQ Select PARENTESE_DIR 
-	| Expr MAIOR_IGUAL PARENTESE_ESQ Select PARENTESE_DIR	
+	| MINUS Expr %prec NEG
+	| NOT Expr	
+	| Expr Comp_op PARENTESE_ESQ Select PARENTESE_DIR
 ;
 
 Bool_op:
@@ -141,8 +140,11 @@ Identificador:
 		
 %%
 
+extern int 	yylineno;	
+extern char 	*yytext;
+
 int yyerror(char *s) {
-	printf("%s\n", s);
+	printf("%s. Linha: %d. Token não esperado: %s\n", s, yylineno, yytext);
 }
 
 int main(int ac, char **av) {

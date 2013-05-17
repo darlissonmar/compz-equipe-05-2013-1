@@ -1,3 +1,4 @@
+%option yylineno
 %{
 #define YYSTYPE double
 #include "sql.tab.h"
@@ -71,3 +72,4 @@ T_PARAMETRO_STRING	\".*\"
 ">="			return MAIOR_IGUAL;
 ";"			return END;
 "\n" 			{}
+.			{printf("\nToken Inválido: %s\n", yytext); return(1);}
