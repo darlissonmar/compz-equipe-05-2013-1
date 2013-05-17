@@ -3,6 +3,8 @@
 #define YYSTYPE double
 #include "sql.tab.h"
 #include <stdlib.h>
+
+#define ERRO 1
 %}
 
 T_BRANCO		[ \t\r]+
@@ -51,7 +53,7 @@ T_PARAMETRO_STRING	\".*\"
 {T_DESC}		return DESC;
 
 {T_NOME}		return IDENTIFICADOR;			
-{T_TABELA_NOME}		return IDENTIFICADOR_COM_TABELA;
+{T_TABELA_NOME}	return IDENTIFICADOR_COM_TABELA;
 
 {T_PARAMETRO_INTEIRO}	return INTEIRO;
 {T_PARAMETRO_REAL}	return REAL;
@@ -72,4 +74,4 @@ T_PARAMETRO_STRING	\".*\"
 ">="			return MAIOR_IGUAL;
 ";"			return END;
 "\n" 			{}
-.			{printf("\nToken Inválido: %s\n", yytext); return(1);}
+.			{printf("\nToken Inválido: %s\n", yytext); return(ERRO);}

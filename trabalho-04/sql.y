@@ -46,12 +46,10 @@ Input:
 
 Query:
 	Select
-	| Select OrderBy
-	| Select Where OrderBy
 ;
 
 Select:
-	SELECT Campos FROM Tabelas
+	SELECT Campos FROM Tabelas Where OrderBy
 ;
 
 Campos:
@@ -75,7 +73,7 @@ Tabela:
 ;
 
 OrderBy:
-	ORDER BY Campos_OrderBy
+	| ORDER BY Campos_OrderBy
 ;
 
 Campos_OrderBy:
@@ -90,7 +88,7 @@ Campo_OrderBy:
 ;
 
 Where:
-	WHERE Expr
+	| WHERE Expr
 ;
 
 Expr:
@@ -156,7 +154,7 @@ int main(int ac, char **av) {
 	}
 
 	if(!yyparse())
-		printf("SQL parse worked\n");
+		printf("Todas as cláusulas SQL são válidas!\n");
 	else
-		printf("SQL parse failed\n");
+		printf("Existem erros de SQL.\n");
 }
