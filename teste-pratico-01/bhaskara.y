@@ -63,58 +63,61 @@ BlocoComando:
 
 Comandos:
 	Comando
-	| Comandos T_FIM_COMANDO Comando
+	| Comandos Comando
 ;
 
 Comando:
-	Leia
+	Leia T_FIM_COMANDO
+	| Escreva T_FIM_COMANDO
+	| Atribuicao T_FIM_COMANDO
+;
 
+Leia:
+	T_LEIA T_PARENTESE_ESQ T_IDENTIFICADOR T_PARENTESE_DIR
+;
 
+Escreva:
+	T_ESCREVA T_PARENTESE_ESQ ConteudoEscreva T_PARENTESE_DIR
+	| T_ESCREVAL T_PARENTESE_ESQ ConteudoEscreva T_PARENTESE_DIR
+;
+
+ConteudoEscreva:
+	T_IDENTIFICADOR OpcaoCasasDecimais
+	| T_STRING
+	| ConteudoEscreva T_IDENT_SEPARADOR ConteudoEscreva
+;
+
+OpcaoCasaDecimais:
+	
+	| T_TIPO_ATRIBUIDOR T_INTEIRO
+	| T_TIPO_ATRIBUIDOR T_INTEIRO T_TIPO_ATRIBUIDOR T_INTEIRO 
+;
+
+Atribuicao:
+	T_IDENTIFICADOR T_OPERADOR_ATRIBUICAO Expr
 
 Expr:
-	Identificador
-	| INTEIRO		
-	| REAL
-	| TEXTO
+	T_IDENTIFICADOR
+	| T_INTEIRO		
+	| T_REAL
 	| PARENTESE_ESQ Expr PARENTESE_DIR
-	| Expr Bool_op Expr
-	| Expr Comp_op Expr	
 	| Expr Add_op Expr
 	| Expr Mult_op Expr
 	| MINUS Expr %prec NEG
-	| NOT Expr	
-	| Expr Comp_op PARENTESE_ESQ Select PARENTESE_DIR
-;
-
-Bool_op:
-	AND
-	| OR
-	| XOR
-;
-
-Comp_op:
-	IGUAL
-	| DIFERENTE
-	| MENOR
-	| MENOR_IGUAL
-	| MAIOR
-	| MAIOR_IGUAL
+	| Expr T_OPERADOR_EXPONENCIACAO Expr
+	| T_RAIZQ PARENTESE_ESQ Expr PARENTESE_DIR
 ;
 
 Add_op:
-	PLUS
-	| MINUS
+	T_OPERADOR_SOMA
+	| T_OPERADOR_SUBTRACAO
 ;
 
 Mult_op:
-	ASTERISCO
-	| DIVIDE
+	T_OPERADOR_MULTIPLICACAO
+	| T_OPERADOR_DIVISAO
 ;
 
-Identificador:
-	IDENTIFICADOR
-	| IDENTIFICADOR_COM_TABELA
-;
 		
 %%
 
@@ -134,7 +137,7 @@ int main(int ac, char **av) {
 	}
 
 	if(!yyparse())
-		printf("Todas as cláusulas SQL são válidas!\n");
+		printf("O algoritmo é valido!\n");
 	else
-		printf("Existem erros de SQL.\n");
+		printf("Existem erros no algoritmo.\n");
 }
