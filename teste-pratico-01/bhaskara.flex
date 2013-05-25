@@ -201,7 +201,7 @@ T_BRANCO		[ \t\r]*
 "\.\."                 	return T_VETOR_INTERVALO;
 "<-"                	return T_OPERADOR_ATRIBUICAO;
 ","			return T_IDENT_SEPARADOR;
-";"			return T_TIPO_ATRIBUIDOR;
+":"			return T_TIPO_ATRIBUIDOR;
 {T_NUMERO_INTEIRO}	return T_NUMERO_INTEIRO;
 {T_NUMERO_REAL}		return T_NUMERO_REAL;
 {T_E}			return T_OP_LOGICO_E;
