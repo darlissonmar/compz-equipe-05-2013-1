@@ -140,7 +140,7 @@ T_BRANCO		[ \t\r]*
 {T_FIMREPITA}		return T_FIMREPITA;       
 {T_FIMSE}		return T_FIMSE;          
 {T_FUNCAO}		return T_FUNCAO;       
-{T_GRAUPRAD}		return T_GRAUPRAD       
+{T_GRAUPRAD}		return T_GRAUPRAD;       
 {T_INICIO}		return T_INICIO;      
 {T_INT}			return T_INT;
 {T_INTEIRO}		return T_INTEIRO;  
@@ -178,8 +178,8 @@ T_BRANCO		[ \t\r]*
 {T_VAR}			return T_VAR;
 {T_VETOR}		return T_VETOR;
 {T_VERDADEIRO}		return T_VERDADEIRO;
-{T_COMENTARIO_UL}	return T_COMENTARIO_UL; 
-{T_COMENTARIO_ML}	return T_COMENTARIO_ML; 
+{T_COMENTARIO_UL}	{} 
+{T_COMENTARIO_ML}	{} 
 "+"                 	return T_OPERADOR_SOMA;
 "-"                 	return T_OPERADOR_SUBTRACAO;
 "*"                 	return T_OPERADOR_MULTIPLICACAO;
@@ -204,13 +204,12 @@ T_BRANCO		[ \t\r]*
 ";"			return T_TIPO_ATRIBUIDOR;
 {T_NUMERO_INTEIRO}	return T_NUMERO_INTEIRO;
 {T_NUMERO_REAL}		return T_NUMERO_REAL;
-{T_E}			return T_OP_LOGICO_E;}
-{T_XOU}			return T_OP_LOGICO_XOU;}
-{T_NAO}			return T_OP_LOGICO_NAO;}
-{T_OU}			return T_OP_LOGICO_OU;}
-
+{T_E}			return T_OP_LOGICO_E;
+{T_XOU}			return T_OP_LOGICO_XOU;
+{T_NAO}			return T_OP_LOGICO_NAO;
+{T_OU}			return T_OP_LOGICO_OU;
 {T_IDENTIFICADOR}	return T_IDENTIFICADOR;
 {T_BRANCO}		{}
-\n			return T_FIM_COMANANDO;
+\n			return T_FIM_COMANDO;
 {T_INVALIDO}		return T_INVALIDO;
 .			return ERRO;
