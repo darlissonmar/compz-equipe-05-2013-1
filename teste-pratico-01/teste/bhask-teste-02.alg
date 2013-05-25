@@ -18,7 +18,7 @@ inicio
       x1 <- (-1*(b)+ raizq(delta))/(2*a)
       x2 <- (-1*(b)+ raizq(delta))/(2*a)
       
-      escreva("x1 = : ", x1:2:2)
+      escreval("x1 = : ", x1:2:2)
       escreval("x2 = : ", x2:2:2)
 
       
