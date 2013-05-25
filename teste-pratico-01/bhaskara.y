@@ -55,16 +55,16 @@ Algoritmo:
 ;
 
 BlocoCabecalho:
-	T_ALGORITMO T_STRING T_FIM_COMANDO
+	T_ALGORITMO T_STRING FimComando
 ;
 
 BlocoDeclaracoes:
-	T_VAR QuebraComando ListaVariaveis T_TIPO_ATRIBUIDOR TipoVariavel T_FIM_COMANDO
+	T_VAR QuebraComando ListaVariaveis T_TIPO_ATRIBUIDOR TipoVariavel FimComando
 ;
 
 QuebraComando:
 	
-	| T_FIM_COMANDO
+	| FimComando
 ;
 
 ListaVariaveis:
@@ -78,7 +78,7 @@ TipoVariavel:
 ;
 
 BlocoComando:
-	T_INICIO T_FIM_COMANDO Comandos T_FIMALGORITMO QuebraComando
+	T_INICIO FimComando Comandos T_FIMALGORITMO QuebraComando
 ;
 
 Comandos:
