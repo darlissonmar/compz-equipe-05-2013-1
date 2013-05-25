@@ -40,6 +40,7 @@ T_EXP			(E|e)(X|x)(P|p)
 T_FACA			(F|f)(A|a)(C|c)(A|a)
 T_FALSO			(F|f)(A|a)(L|l)(S|s)(O|o)
 T_FIMALGORITMO		(F|f)(I|i)(M|m)(A|a)(L|l)(G|g)(O|o)(R|r)(I|i)(T|t)(M|m)(O|o)
+T_FIM_COMANDO           [\n]
 T_FIMENQUANTO		(F|f)(I|i)(M|m)(E|e)(N|n)(Q|q)(U|u)(A|a)(N|n)(T|t)(O|o)
 T_FIMESCOLHA		(F|f)(I|i)(M|m)(E|e)(S|s)(C|c)(O|o)(L|l)(H|h)(A|a)
 T_FIMFUNCAO		(F|f)(I|i)(M|m)(F|f)(U|u)(N|n)(C|c)(A|a)(O|o)
@@ -97,7 +98,7 @@ T_NUMERO_REAL		[0-9]+\.[0-9]+
 T_IDENTIFICADOR		[a-zA-Z\_][a-zA-Z0-9\_]*
 T_INVALIDO		[0-9][a-zA-Z0-9]*
 T_STRING		\".*\"
-T_BRANCO		[ \t\r]*
+T_BRANCO		[ \t\r]+
 
 %%
 {T_STRING}		return T_STRING;
@@ -210,6 +211,6 @@ T_BRANCO		[ \t\r]*
 {T_OU}			return T_OP_LOGICO_OU;
 {T_IDENTIFICADOR}	return T_IDENTIFICADOR;
 {T_BRANCO}		{}
-\n			return T_FIM_COMANDO;
+{T_FIM_COMANDO}		return T_FIM_COMANDO;
 {T_INVALIDO}		return T_INVALIDO;
 .			return ERRO;

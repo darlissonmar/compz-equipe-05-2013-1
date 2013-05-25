@@ -87,9 +87,14 @@ Comandos:
 ;
 
 Comando:
-	Leia T_FIM_COMANDO
-	| Escreva T_FIM_COMANDO
-	| Atribuicao T_FIM_COMANDO
+	Leia FimComando
+	| Escreva FimComando
+	| Atribuicao FimComando
+;
+
+FimComando:
+	T_FIM_COMANDO
+	| FimComando T_FIM_COMANDO
 ;
 
 Leia:
@@ -109,8 +114,8 @@ ConteudoEscreva:
 
 OpcaoCasasDecimais:
 	
-	| T_TIPO_ATRIBUIDOR T_INTEIRO
-	| T_TIPO_ATRIBUIDOR T_INTEIRO T_TIPO_ATRIBUIDOR T_INTEIRO 
+	| T_TIPO_ATRIBUIDOR T_NUMERO_INTEIRO
+	| T_TIPO_ATRIBUIDOR T_NUMERO_INTEIRO T_TIPO_ATRIBUIDOR T_NUMERO_INTEIRO 
 ;
 
 Atribuicao:
@@ -118,8 +123,8 @@ Atribuicao:
 
 Expr:
 	T_IDENTIFICADOR
-	| T_INTEIRO		
-	| T_REAL
+	| T_NUMERO_INTEIRO		
+	| T_NUMERO_REAL
 	| T_PARENTESE_ESQ Expr T_PARENTESE_DIR
 	| Expr Add_op Expr
 	| Expr Mult_op Expr
