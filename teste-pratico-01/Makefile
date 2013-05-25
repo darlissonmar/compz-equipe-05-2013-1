@@ -4,4 +4,4 @@ compile: bhaskara.y bhaskara.flex
 	gcc  -o bhaskara bhaskara.flex.c bhaskara.tab.c -lfl -lm
 
 clean:
-	rm -f *.c *.h sql
+	rm -f *.c *.h bhaskara
